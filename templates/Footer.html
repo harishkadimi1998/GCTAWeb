@@ -1,0 +1,437 @@
+<script>
+    $(document).on("change","select",function() {
+        var ddlId = $(this).attr('id');
+        var selectId = $(this).val();
+        var selectName = $('#'+ddlId+' option:selected').text();
+        var selectSWId = $('#'+ddlId+' option:selected').attr('id');
+    
+        if(selectId && selectName != "Others")
+        {
+            $('#'+ddlId+"Name").val(selectName);
+            $('#'+ddlId+"SWId").val(selectSWId);
+            $('#'+ddlId+"Div").hide();
+            $('#'+ddlId+"Other").val("");
+        }
+        else if(selectId && selectName == "Others")
+        {		
+            $('#'+ddlId+"Div").show();		
+            $('#'+ddlId+"Name").val(selectName);
+            $('#'+ddlId+"SWId").val(selectSWId);
+            $('#'+ddlId+"Other").val("");
+        }
+        else
+        {
+            $('#'+ddlId+"Name").val("");
+            $('#'+ddlId+"SWId").val("");
+            $('#'+ddlId+"Div").hide();
+            $('#'+ddlId+"Other").val("");
+        }
+    });
+    </script>
+<script>
+    /* validation  */
+// version 1.0
+// Required
+function ValidateRequired(data) {
+    if (data.trim() == "") {
+        return false
+    }
+    return true
+}
+// Number only
+function ValidateNumberOnly(data) {
+    var expression = /^\d+$/
+    if (!expression.test(data) && data.trim() != "") {
+        return false
+    }
+    return true
+}
+// Alpha only
+function ValidateAlphaOnly(data) {
+    var expression = /^[a-zA-Z '.-]+$/
+    if (!expression.test(data) && data.trim() != "") {
+        return false
+    }
+    return true
+}
+function ValidateAlphaNumeric(data) {
+    var expression = /^[a-zA-Z0-9 ]+$/
+    if (!expression.test(data) && data.trim() != "") {
+        return false
+    }
+    return true
+}
+function ValidateDecimal(data) {
+    var expression = /^[0-9]*(?:\.\d{1,2})?$/
+    if (!expression.test(data) && data.trim() != "") {
+        return false
+    }
+    return true
+}
+// Max length
+function ValidateMaxLenght(data, maxLength) {
+    if (data.length > maxLength && data.trim() != "") {
+        return false
+    }
+    return true
+}
+// Min length
+function ValidateMinLenght(data, minLength) {
+    if (data.length < minLength && data.trim() != "") {
+        return false
+    }
+    return true
+}
+// Max Value
+function ValidateMaxValue(data, maxValue) {
+    if (data > maxValue && data.trim() != "") {
+        return false
+    }
+    return true
+}
+// Max Value
+function ValidateMinValue(data, minValue) {
+    if (data < minValue && data.trim() != "") {
+        return false
+    }
+    return true
+}
+//PhoneNumber 10 digit
+function ValidatePhoneNumber(data) {
+    var expression = /^[6789]\d{9}$/
+    if (!expression.test(data) && data.trim() != "") {
+        return false
+    }
+    return true
+}
+//Email validate
+function ValidateEmailId(data) {
+    //var expression = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;   //hangs
+    var expression = /^\w+([\.-]\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    if (!expression.test(data) && data.trim() != "") {
+        return false
+    }
+    return true
+}
+/* start Date validation */
+//dateformat validate
+function ValidateDateFormat(data) {
+    var expression = /^([0-9]{1,2})\/([0-9]{1,2})\/([0-9]{4})$/
+    //var expression = /^\d{1,2}\/\d{1,2}\/\d{4}$/;    //working expression same as above
+    if (!expression.test(data) && data.trim() != "") {
+        return false
+    }
+    return true
+}
+//validate isdate
+function ValidateIsDate(data) {
+    if (data.trim() != "") {
+        var bits = data.split('/')
+        var d = new Date(bits[2], bits[1] - 1, bits[0])
+        return d && (d.getMonth() + 1) == bits[1]
+    }
+    return true
+}
+// date range validate
+function ValidateDateRange(data, minDate, maxDate) {
+    if (data.trim() != "") {
+        if (minDate == null) {
+            minDate = "01/09/2016"
+        }
+        if (maxDate == null) {
+            maxDate = "31/12/9999"
+        }
+        /*if(!ValidateDateFormat(data) || !ValidateDateFormat(minDate) || !ValidateDateFormat(maxDate))
+        {
+            console.log("Passed parameter date format is wrong");
+            return false;
+        }
+        else if(!ValidateIsDate(data) || !ValidateIsDate(minDate) || !ValidateIsDate(maxDate))
+        {
+            console.log("Passed parameter date is invalid");
+            return false;
+        }
+        else
+        {*/
+        var dataDate = new Date(data.split("/").reverse().join("/"))
+        var minDateDate = new Date(minDate.split("/").reverse().join("/"))
+        var maxDateDate = new Date(maxDate.split("/").reverse().join("/"))
+        if (dataDate < minDateDate || dataDate > maxDateDate) {
+            return false
+        }
+        return true
+        /*}*/
+    }
+    return true
+}
+/* End Common validation function  */
+/* end Date validation */
+/* Show error message in sweet alert */
+function ErrorMessage(ctrl, message) {
+    if (ctrl != null) {
+        ctrl.focus()
+        ctrl.val("")
+    }
+    Swal.fire({
+        text: message,
+        icon: "error"
+    })
+}
+/* Show error message in sweet alert */
+/* start common onchange validation*/
+$(document).ready(function () {
+    $("#password,#confirmpassword").on("keypress", function (event) {
+        if (event.which == 32) {
+            event.preventDefault()
+            //Swal.fire('Space not accepted');
+            ErrorMessage($(this), "Space not accepted")
+        }
+        if ($(this).val().length === 0 && (event.which == 32) && !$(this).is('[readonly]')) {
+            event.preventDefault()
+            //Swal.fire('Space not accepted');
+            ErrorMessage($(this), "Space not accepted")
+        }
+    })
+    // Age Validation
+    $(document).on("change", ".vld_age", function () {
+        if ($(this).hasClass('vld_age')) {
+            if (!ValidateMinValue($(this).val(), 1) || !ValidateMaxValue($(this).val(), 120) && !$(this).is('[readonly]')) {
+                ErrorMessage($(this), "Age must be 1 - 120")
+            }
+        }
+    })
+    // contact no
+    $(document).on("change", ".vld_phoneno", function () {
+        if ($(this).hasClass('vld_phoneno')) {
+            if (!ValidatePhoneNumber($(this).val())) {
+                ErrorMessage($(this), "Phone number must be 10 digits and starts with 6,7,8,9 only")
+            }
+        }
+    })
+    //pincode validate
+    $(document).on("change", ".vld_pincode", function () {
+        if ($(this).hasClass('vld_pincode')) {
+            if (!ValidateMaxLenght($(this).val(), 6) || !ValidateMinLenght($(this).val(), 6)) {
+                ErrorMessage($(this), "Pincode must be 6 digits only")
+            }
+            else if (Number($(this).val()) == 0) {
+                ErrorMessage($(this), "Invalid pincode")
+            }
+        }
+    })
+    //pincode validate
+    $(document).on("change", ".vld_minlength", function () {
+        if (!$(".sweet-alert").is(":visible")) {
+            if (!ValidateMinLenght($(this).val(), $(this).attr('data-minlength'))) {
+                ErrorMessage($(this), "Minimum " + $(this).attr('data-minlength') + " character")
+            }
+        }
+    })
+    //Email Id validate
+    $(document).on("change", ".vld_email", function () {
+        if (!ValidateEmailId($(this).val())) {
+            ErrorMessage($(this), "Invalid Email Id format")
+        }
+    })
+    //Date Validate
+    $(document).on("change", ".vld_date", function (e) {
+        if (e.originalEvent !== undefined) {
+            var curDate = new Date()
+            curDate = curDate.getDate() + '/' + (curDate.getMonth() + 1) + '/' + curDate.getFullYear()
+            if (!ValidateDateFormat($(this).val())) {
+                ErrorMessage($(this), "Wrong date format. date format must be dd/mm/yyyyy")
+            }
+            else if (!ValidateIsDate($(this).val())) {
+                ErrorMessage($(this), "Invalid Date")
+            }
+            else if (!ValidateDateRange($(this).val(), '01/08/2017', curDate)) {
+                ErrorMessage($(this), "Minimum date should be 01/08/2017 and maximum date should be today")
+            }
+        }
+    })
+    //Date Validate with no max limit if want max validate in the form itselft
+    $(document).on("change", ".vld_date_follow_up", function (e) {
+        if (e.originalEvent !== undefined) {
+            var curDate = new Date()
+            curDate = curDate.getDate() + '/' + (curDate.getMonth() + 1) + '/' + curDate.getFullYear()
+            if (!ValidateDateFormat($(this).val())) {
+                ErrorMessage($(this), "Wrong date format. date format must be dd/mm/yyyyy")
+            }
+            else if (!ValidateIsDate($(this).val())) {
+                ErrorMessage($(this), "Invalid Date")
+            }
+        }
+    })
+    //Month And Year Validator
+    $(document).on("change", ".vld_month_year", function (e) {
+        if (e.originalEvent !== undefined) {
+            var curDate = new Date()
+            curDate = curDate.getDate() + '/' + (curDate.getMonth() + 1) + '/' + curDate.getFullYear()
+            var selectedDate = '01/' + $(this).val()
+            if (!ValidateDateFormat(selectedDate)) {
+                ErrorMessage($(this), "Wrong date format. date format must be dd/mm/yyyyy")
+            }
+            else if (!ValidateIsDate(selectedDate)) {
+                ErrorMessage($(this), "Invalid Date")
+            }
+            else if (!ValidateDateRange(selectedDate, '01/09/2016', curDate)) {
+                ErrorMessage($(this), "Minimum date should be 01/09/2016 and Maximum date should be today")
+            }
+        }
+    })
+    //Digits Validate because if user paste from somewhere
+    // $(document).on("keyup", ".onlydigits", function () {
+    //  if (!ValidateNumberOnly($(this).val())) {
+    //      ErrorMessage($(this), "Please enter only numbers")
+    //  }
+    //  else if (Number($(this).val()) == 0) {
+    //      ErrorMessage($(this), "Invalid number")
+    //  }
+    // })
+    /* Alpha Validate because if user paste from somewhere */
+    $(document).on("change", ".onlyalpha", function () {
+        
+        if (!ValidateAlphaOnly($(this).val())) {
+            ErrorMessage($(this), "Please enter Character only")
+        }
+    })
+    // $(document).on("change", ".onlyalphanumeric", function () {
+        
+    //  if (!ValidateAlphaNumeric($(this).val())) {
+    //      ErrorMessage($(this), "Please enter aphanumeric only")
+    //  }
+        
+    // })
+    /* maxlength Validate because if user paste from somewhere */
+    $(document).on("change", '.vld_maxlength', function (event) {
+        if (!ValidateMaxLenght($(this).val(), $(this).attr('data-maxlength'))) {
+            ErrorMessage($(this), "maximum " + $(this).attr('data-maxlength') + " character")
+        }
+    })
+})
+/* end common onchange validation*/
+/* start common keypress validation*/
+$(document).ready(function () {
+    $(document).on("keypress", ".onlydigits , .vld_weight", function (event) {
+        if (event.which != 8 && event.which != 0 && (event.which < 48 || event.which > 57) && !$(this).is('[readonly]')) {
+            event.preventDefault()
+            ErrorMessage(null, "Please enter only numbers")
+        }
+    })
+    $(document).on("keypress", ".vld_age", function () {
+        if (!ValidateMaxLenght($(this).val(), 3 - 1)) {
+            event.preventDefault()
+        }
+        else if (event.which != 8 && event.which != 0 && (event.which < 48 || event.which > 57) && !$(this).is('[readonly]')) {
+            event.preventDefault()
+            $(this).removeClass("vld_age")
+            ErrorMessage(null, "Please enter only numbers")
+            $(this).addClass("vld_age")
+        }
+        /*else if(!ValidateMinValue($(this).val(),18) || !ValidateMaxValue($(this).val(),120)  && !$(this).is('[readonly]') && $(this).val().length > 1)
+        {           
+            //ErrorMessage($(this),"Age must be 1 - 120");
+            event.preventDefault();
+            $(this).removeClass("vld_age");
+            ErrorMessage(null,"Age must be 1 - 120");
+            $(this).addClass("vld_age");
+        }*/
+    })
+    $(document).on("keyup", ".vld_weight", function () {
+        if (!ValidateNumberOnly($(this).val())) {
+            ErrorMessage($(this), "Weight must be number only")
+        }
+        else if (!ValidateMinValue($(this).val(), 1) || !ValidateMaxValue($(this).val(), 150) && !$(this).is('[readonly]')) {
+            ErrorMessage($(this), "Weight must be 1 - 150")
+        }
+    })
+    $(document).on("keypress", ".onlyalpha", function (event) {
+        var inputValue = event.charCode
+        if (!(inputValue >= 65 && inputValue <= 90) && !(inputValue >= 97 && inputValue <= 122) && (inputValue != 32 && inputValue != 0) && !$(this).is('[readonly]')) {
+            event.preventDefault()
+            ErrorMessage(null, "Please enter alphabets only")
+        }
+    })
+    $(document).on("keyup", ".onlyalphanumeric", function (event) {
+        
+        // var inputValue = event.charCode
+        if (!ValidateAlphaNumeric($(this).val())) {
+            event.preventDefault()
+            ErrorMessage($(this), "Please enter alphabetsnumerics only")
+        }
+    })
+    $(document).on("change", ".onlydecimal", function (event) {
+        
+        // var inputValue = event.charCode
+        if (!ValidateDecimal($(this).val())) {
+            event.preventDefault()
+            ErrorMessage($(this), "Please enter valid numbers only")
+        }
+    })
+    $(document).on("keypress", '.vld_maxlength', function (event) {
+        if (!ValidateMaxLenght($(this).val(), $(this).attr('data-maxlength') - 1)) {
+            event.preventDefault()
+            ErrorMessage(null,"maximum "+ $(this).attr('data-maxlength') + " character");   
+        }
+    })
+    $(document).on("keypress", ".vld_phoneno", function (event) {
+        //debugger;
+        if (event.which != 8 && event.which != 0 && (event.which < 48 || event.which > 57) && !$(this).is('[readonly]')) {
+            event.preventDefault()
+            $(this).removeClass("vld_phoneno")
+            ErrorMessage(null, "Please enter only numbers")
+            $(this).addClass("vld_phoneno")
+        }
+        else if ($(this).val().length === 0 && (event.which !== 54 && event.which !== 55 && event.which !== 56 && event.which !== 57) && !$(this).is('[readonly]')) {
+            event.preventDefault()
+            $(this).removeClass("vld_phoneno")
+            ErrorMessage(null, "Contact Number must start from 6,7,8,9")
+            $(this).addClass("vld_phoneno")
+        }
+        else if (!ValidateMaxLenght($(this).val(), 14 - 1) && !$(this).is('[readonly]')) {
+            event.preventDefault()
+            $(this).removeClass("vld_phoneno")
+            //ErrorMessage(null,"Must be 10 digits only");
+            $(this).addClass("vld_phoneno")
+        }
+    })
+    $(document).on("keypress", ".vld_pincode", function (event) {
+        if (event.which != 8 && event.which != 0 && (event.which < 48 || event.which > 57) && !$(this).is('[readonly]')) {
+            event.preventDefault()
+            $(this).removeClass("vld_pincode")
+            ErrorMessage(null, "Please enter only numbers")
+            $(this).addClass("vld_pincode")
+        }
+        else if (!ValidateMaxLenght($(this).val(), 6 - 1)) {
+            event.preventDefault()
+            $(this).removeClass("vld_pincode")
+            ErrorMessage(null, "Pincode must be 6 digits only")
+            $(this).addClass("vld_pincode")
+        }
+        else if (Number($(this).val()) == 0 && $(this).val().length == 5) {
+            event.preventDefault()
+            $(this).removeClass("vld_pincode")
+            ErrorMessage($(this), "Invalid pincode")
+            $(this).addClass("vld_pincode")
+        }
+    })
+})
+/* end common onkeydown validation*/
+/* start disable paste option */
+$(document).ready(function () {
+    $(document).bind("paste", "input[type='text'],textarea", function (e) {
+        e.preventDefault()
+    })
+    /* First Value should not take space */
+    $(document).on("keydown", "input[type='text'],textarea", function (event) {
+        if ($(this).val().length === 0 && event.which === 32) {
+            event.preventDefault()
+        }
+    })
+    //drop shoul not work
+    $(document).on("drop", "input[type='text'],textarea", function (event) {
+        event.preventDefault()
+    })
+})
+</script>
+<!--end disable paste option-->
