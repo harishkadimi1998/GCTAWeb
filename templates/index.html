@@ -45,34 +45,36 @@
                     </div>
                     <!-- ===================================================================================================================================================== -->
                     <div class="col-lg-5  F2">
-                        <div class="col-lg-12  Login ">
-                            <div class="col-12">
-                                <center><img src="{{STATICURL}}/Group_248.png" alt="gcta" id="logo1"></center>
+                        <form id="LoginForm">
+                            <div class="col-lg-12  Login ">
+                                <div class="col-12">
+                                    <center><img src="{{STATICURL}}/Group_248.png" alt="gcta" id="logo1"></center>
 
+                                </div>
+                                <div class="col-lg-12 mt-4  ">
+                                    <h6>REGISTER OR LOGIN TO ACCESS THE CHANGE AGENTS TRAINING</h6>
+                                    <div class="form-floating" id="uiline">
+                                        <input id="userId" type="text" name="userid" class="effect-1 Ui" placeholder="Username">
+                                    </div>
+                                    <div class="form-floating" id="uiline">
+                                        <input id="password" type="Password" name="pwd" class="effect-1 Ui" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 mb-4 d-flex justify-content-end Fp">
+                                        <a href="Forgotpassword" id="log2" class="">Forgot Password</a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center">
+                                        <button type="button" class="btn btn-primary buttons" onclick="FormSubmit()" id='Submit' style="">Submit</button>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center">
+                                        <a href="RegisterPage" id="log2">Register</a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-lg-12 mt-4  ">
-                                <h6>REGISTER OR LOGIN TO ACCESS THE CHANGE AGENTS TRAINING</h6>
-                                <div class="form-floating" id="uiline">
-                                    <input id="userId" type="text" class="effect-1 Ui" placeholder="Username">
-                                </div>
-                                <div class="form-floating" id="uiline">
-                                    <input id="password" type="Password" class="effect-1 Ui" placeholder="Password">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 mb-4 d-flex justify-content-end Fp">
-                                    <a href="Forgotpassword" id="log2" class="">Forgot Password</a>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center">
-                                    <button id="log">Login</button>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center">
-                                    <a href="RegisterPage" id="log2">Register</a>
-                                </div>
-                            </div>
-                        </div>
+                        </form>
                         <footer class="row SV">
                             <div class=" col-lg-8 col-md-7 col-sm-8 col-8 d-flex justify-content-end">
                                 <p>Powered by Kavin Corporation</p>
@@ -188,7 +190,7 @@
     </div>
     </div>
     <!-- ============================================================================================================================================================================================================================================================= -->
-    <script>
+    <!--<script>
         function eraseText() {
             debugger;
             document.getElementById("userId").value = "";
@@ -225,6 +227,38 @@
             }
 
         });
+    </script>-->
+
+    <script>
+        //     function eraseText() {
+        //         debugger;
+        //         document.getElementById("userId").value = "";
+        //         document.getElementById("password").value = "";
+        //     }
+    
+        function FormSubmit() {
+            debugger;
+            var myFormData = new FormData($("#LoginForm")[0]);
+            $.ajax({
+                url: 'Login',
+                type: "post",
+                data: myFormData,
+                contentType: false,
+                processData: false,
+                beforeSend: function () {
+                },
+                success: function (data) {
+                    if (data == 'success') {
+                        window.location.href = "HomePage";
+                        
+                    } else {
+                        alert("Userid or password is wrong");
+                        
+                    }
+                },
+                error: function () {}
+            });
+        }
     </script>
 </body>
 
