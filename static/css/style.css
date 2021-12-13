@@ -1,0 +1,919 @@
+p {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+#logo {
+    width: 30%;
+    height: 6%;
+    margin: 3vh 0 1vh 0;
+}
+
+.BC {
+    background-color: #384C6D;
+    color: white;
+    font-size: 15.5px;
+    min-height: 100vh;
+    padding: 10px;
+}
+
+.BC h6 {
+    font-size: 17px;
+    text-decoration: underline;
+    margin: 1vh 0 0 0;
+}
+
+/* ============================================================================================================================================= */
+
+.Login {
+    transform: translate(0%, 50%);
+    position: relative;
+}
+
+.Login h6 {
+    color: #7b7c83;
+    text-align: center;
+    margin-bottom: 5vh;
+    font-size: 18px;
+}
+
+#logo1 {
+    width: 45%;
+    height: 6%;
+    text-align: center;
+}
+
+.Ui {
+    font-size: 17px;
+    font-family: sans-serif;
+    color: #0D0D0D;
+    border: none;
+    background: #fdfdfd;
+}
+
+input:focus,
+textarea {
+    outline: none;
+}
+
+#uiline {
+    border-bottom: 1px solid #ccc;
+    margin: 42px 80px 0 80px;
+}
+
+@media screen and (max-width:1660px) {
+    #uiline {
+        border-bottom: 1px solid #ccc;
+        margin: 42px 80px 0 80px;
+    }
+}
+
+@media screen and (min-width:991px) {
+    .Login {
+        transform: translate(0%, 50%);
+    }
+
+    #uiline {
+        margin: 42px 80px 0 80px;
+    }
+}
+
+.Login p {
+    float: right;
+    margin: 0px 100px 0 100px;
+    font-size: 12px;
+}
+
+.Login a {
+    width: 60%;
+    height: 3rem;
+    color: black;
+}
+
+#log {
+    border: none;
+    background: #384C6D;
+    color: white;
+    transform: translate(20%, -20%);
+    padding: 12px;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 3px;
+}
+
+#log2 {
+    font: normal normal bold 18px/28px;
+    border: 1px solid grey;
+    background-color: white;
+    transform: translate(-15%, -20%);
+    padding: 12px;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 3px;
+}
+
+@media screen and (max-width:575px) {
+    #log {
+        transform: translate(0%, 0%);
+    }
+
+    #log2 {
+        transform: translate(0%, 50%);
+    }
+
+    #uiline {
+        border-bottom: 1px solid #ccc;
+        margin: 42px 50px 0 50px;
+    }
+}
+
+.Fp #log2 {
+    font: normal normal bold 18px/28px;
+    transform: translate(-34%, 0%);
+    text-decoration: none;
+    text-align: center;
+    border: none;
+    width: 29%;
+    white-space: nowrap;
+}
+
+@media screen and (max-width:500px) {
+    .Fp #log2 {
+        transform: translate(-75%, 0%);
+    }
+}
+
+/* =======================================================================RegisterPage================================================================================ */
+
+.BCR {
+    background-color: #384C6D;
+    min-height: 100vh;
+}
+
+.RB {
+    background-color: #EDF0F5;
+    position: relative;
+}
+
+#r1logo {
+    width: 2.5rem;
+    margin: 12vh 0 0vh 0;
+}
+
+#rlogo {
+    width: 100%;
+    height: 8%;
+    margin: 5vh 0 3vh 0;
+}
+
+.RS {
+    float: right;
+}
+
+.RS h5 {
+    text-align: center;
+    font-family: inherit;
+    font-size: 15px;
+}
+
+.RS p {
+    text-align: end;
+}
+
+.RS label {
+    font-size: 15px;
+    float: right;
+    text-align: end;
+    margin-top: 10px;
+}
+
+.RS select {
+    width: 22rem;
+    height: 4vh;
+    margin-top: 10px;
+    border: none;
+    background-color: white;
+    margin-bottom: 0.8vh;
+    border-radius: 4px;
+}
+
+.RS input {
+    width: 22rem;
+    height: 4vh;
+    margin-top: 10px;
+    border: none;
+    background-color: white;
+    box-shadow: ivory;
+    border-radius: 4px;
+    margin-bottom: 0.8vh;
+}
+
+.ll input {
+    height: 7vh;
+}
+
+.ll label {
+    float: right;
+    margin-top: 3.5vh;
+}
+
+.RS #log {
+    border: none;
+    background: #384C6D;
+    color: white;
+    transform: translate(0%, 50%);
+    padding: 12px;
+    text-decoration: none;
+    text-align: center;
+    width: 9rem;
+    margin-left: 80px;
+}
+
+.RS #FpR {
+    color: black;
+    margin-left: 40px;
+    font-size: 15px;
+    margin-top: 6vh;
+}
+
+.RS svg {
+    height: 20%;
+    width: 20%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.rfoo p {
+    font-size: 12px;
+}
+
+@media screen and (max-width:1300px) {
+    .RS svg {
+        height: 15%;
+        width: 15%;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .BCR {
+        background-color: #384C6D;
+        min-height: 0vh;
+    }
+
+    .RS {
+        text-align: center;
+    }
+
+    .RS label {
+        font-size: 15px;
+        float: left;
+        text-align: left;
+    }
+
+    .RS input {
+        width: 100%;
+        height: 4vh;
+    }
+
+    .RS select {
+        width: 100%;
+    }
+
+    .ll input {
+        height: 6vh;
+    }
+
+    .ll label {
+        float: none;
+        margin-top: 0vh;
+    }
+
+    .RS #log {
+        margin-left: 27vw;
+    }
+
+    .RS #FpR {
+        margin-left: -2vh;
+    }
+
+    .RS svg {
+        height: 10%;
+        width: 32%;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .RS {
+        text-align: center;
+    }
+
+    #rlogo {
+        margin: 2vh 0 2vh 0;
+    }
+
+    .RS select {
+        width: 100%;
+    }
+
+    .RS input {
+        width: 100%;
+    }
+
+    .RS #log {
+        margin-left: 24vw;
+    }
+
+    .RS svg {
+        height: 8%;
+        width: 23%;
+    }
+}
+
+@media screen and (max-width:575px) {
+    #r1logo {
+        display: none;
+    }
+
+    .RS #FpR {
+        margin-left: -8vh;
+    }
+
+    .RS svg {
+        height: 6%;
+        width: 30%;
+    }
+}
+
+@media screen and (max-width:440px) {
+    .RS #log {
+        margin-left: 20vw;
+    }
+
+    .RS #FpR {
+        margin-left: -2vh;
+        font-size: 12px;
+    }
+
+    .RS svg {
+        height: 6%;
+        width: 28%;
+    }
+}
+
+/* ========================================================================================================================================= */
+
+.Login h1 {
+    color: #000000;
+    text-align: center;
+    margin-bottom: 5vh;
+}
+
+.Login h4 {
+    color: #000000;
+    text-align: center;
+    margin-bottom: 5vh;
+}
+
+.Login h5 {
+    color: #000000;
+    text-align: center;
+    font: normal normal normal 20px/25px Source Sans Pro;
+    margin: 0 120px 0 120px;
+}
+
+.S #log {
+    border: none;
+    background: #384C6D;
+    color: white;
+    transform: translate(0%, 50%);
+    padding: 12px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.S a {
+    width: 30%;
+    height: 3rem;
+}
+
+.F2 {
+    position: relative;
+}
+
+.Sb {
+    position: relative;
+}
+
+.Fpf {
+    position: relative;
+}
+
+.SVs p {
+    position: absolute;
+    bottom: 0;
+    white-space: nowrap;
+}
+
+.SVs svg {
+    position: absolute;
+    height: 26%;
+    width: 40%;
+    bottom: 0;
+    right: 0;
+}
+
+.SV p {
+    position: absolute;
+    bottom: 0;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.SV svg {
+    position: absolute;
+    height: 12%;
+    width: 30%;
+    right: 0;
+    bottom: 0;
+}
+
+.SVf p {
+    font-size: 13px;
+    position: absolute;
+    bottom: 0;
+}
+
+.SVf svg {
+    position: absolute;
+    height: 15%;
+    width: 30%;
+    bottom: 0;
+    right: 0;
+}
+
+@media screen and (max-width:1400px) {
+    .BC {
+        background-color: #384C6D;
+        color: white;
+        font-size: calc(6.5px + 1vh);
+    }
+
+    .Login {
+        transform: translate(0%, 35%);
+    }
+
+    .Login h6 {
+        font-size: 15px;
+    }
+
+    .Login h5 {
+        margin: 0 60px 0 60px;
+    }
+
+    .RS h5 {
+        margin: -2vh 0 2vh 0;
+    }
+
+    .RS {
+        margin-top: 1vh;
+    }
+
+    .RS #FpR {
+        margin-top: 5vh;
+    }
+}
+
+@media screen and (max-width:1300px) {
+    #uiline {
+        border-bottom: 1px solid #ccc;
+        margin: 42px 50px 0 50px;
+    }
+
+    .Fp #log2 {
+        transform: translate(-50%, 0%);
+    }
+}
+
+@media screen and (max-width:991px) {}
+
+@media screen and (max-width:1246px) {
+    /* .SV p {
+                font-size: 13px;
+                margin-top: 51vh;
+                margin-bottom: 0;
+                float: right;
+                position: absolute;
+            } */
+}
+
+@media screen and (max-width:991px) {
+    .Login {
+        transform: translate(0%, 0%);
+    }
+
+    .Fp #log2 {
+        transform: translate(-25%, 0%);
+    }
+
+    #uiline {
+        border-bottom: 1px solid #ccc;
+        margin: 42px 130px 0 130px;
+    }
+
+    .SV p {
+        position: absolute;
+        bottom: -22vh;
+        font-size: 13px;
+    }
+
+    .SV svg {
+        position: absolute;
+        height: 18%;
+        width: 50%;
+        bottom: -20vh;
+    }
+
+    .SVs p {
+        position: absolute;
+        bottom: -30vh;
+    }
+
+    .SVs svg {
+        height: 40%;
+        width: 40%;
+        bottom: -30vh;
+    }
+
+    .SVf p {
+        font-size: 13px;
+        position: absolute;
+        bottom: -15vh;
+        white-space: nowrap;
+    }
+
+    .SVf svg {
+        position: absolute;
+        height: 30%;
+        width: 40%;
+        bottom: -15vh;
+        right: 0;
+    }
+}
+
+@media screen and (max-width:575px) {
+    .Login h5 {
+        margin: 0 0px 0 0px;
+    }
+
+    #uiline {
+        border-bottom: 1px solid #ccc;
+        margin: 42px 50px 0 50px;
+    }
+
+    .SV svg {
+        position: absolute;
+        height: 18%;
+        width: 40%;
+        bottom: -22vh;
+    }
+
+    .SV p {
+        bottom: -24vh;
+    }
+
+    .SVs p {
+        position: absolute;
+        bottom: -25vh;
+    }
+
+    .SVs svg {
+        height: 40%;
+        width: 40%;
+        bottom: -24vh;
+    }
+}
+
+@media screen and (max-width:430px) {
+    .Fp #log2 {
+        transform: translate(-80%, 0%);
+    }
+
+    .SVs p {
+        font-size: 13px;
+    }
+
+    .SVs svg {
+        height: 42%;
+        width: 42%;
+        bottom: -24vh;
+    }
+}
+
+/* ============================================================Forgotpassword====================================================================== */
+
+.Fp1 #log {
+    border: none;
+    background: #384C6D;
+    color: white;
+    transform: translate(0%, 50%);
+    padding: 12px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.Fp1 a {
+    width: 40%;
+    height: 3rem;
+}
+
+.Fpp a {
+    text-align: center;
+    float: none;
+    font-size: 15px;
+    text-decoration: underline;
+    white-space: nowrap;
+}
+
+.Fp1 #uiline {
+    border-bottom: 1px solid #ccc;
+    margin: 42px 140px 0 140px;
+}
+
+@media screen and (max-width:1235px) {
+    .Fp1 #uiline {
+        border-bottom: 1px solid #ccc;
+        margin: 42px 85px 0 85px;
+    }
+}
+
+@media screen and (max-width:410px) {
+    .Fpp a {
+        margin-left: -5vw;
+    }
+}
+
+/* =============================================================HomePage==========================================================================*/
+
+.HB {
+    position: fixed;
+    background-color: #384C6D;
+    z-index: 1045;
+    height: 10vh;
+}
+
+#logohome {
+    width: 100%;
+    height: 100%;
+    padding: 10px 10px 10px 10px;
+}
+
+.HT {
+    padding: 15px 0 0 0;
+}
+
+.HT a {
+    float: right;
+    text-decoration: none;
+    color: black;
+    padding: 7px;
+    margin-right: 10px;
+    font-weight: 500;
+}
+
+.HT a:hover {
+    color: rgb(224, 26, 26);
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.dropdown button {
+    float: right;
+    font-weight: 500;
+}
+
+#pep {
+    float: right;
+}
+
+.sn {
+    height: 10vh;
+    width: 100%;
+    position: fixed;
+    background-color: white;
+}
+
+.HB2 {
+    background-color: #586884;
+    min-height: 100vh;
+}
+
+.HB2 ul {
+    position: fixed;
+    margin-top: 10vh;
+}
+
+.HB3 {
+    background-color: #EDF0F5;
+    padding: 30px;
+    margin-top: 8vh;
+}
+
+.HB3 h5 {
+    font-size: 18px;
+}
+
+.HB4 {
+    background-color: white;
+    padding-bottom: 2vh;
+}
+
+.HB4 svg {
+    float: right;
+    margin-top: 20px;
+    height: 71%;
+    width: 28%;
+}
+
+.HB4 h5 {
+    font-family: inherit;
+}
+
+.HB4 p {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.hbut button {
+    background-color: #655b78;
+    height: 6vh;
+    width: 100%;
+    border-radius: 3px;
+    white-space: nowrap;
+    border: none;
+}
+
+.hbut button a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.vl {
+    border-right: 1px solid #EBEBF2;
+    height: 30px;
+    float: right;
+    margin: 4px;
+}
+
+#Pic {
+    height: 88%;
+    width: 100%;
+}
+
+#pic1 {
+    height: 70%;
+    width: 28%;
+}
+
+.Hbook {
+    float: right;
+    text-align: center;
+}
+
+.active {
+    background-color: rgb(0 0 0 / 20%);
+    width: 15.5vw;
+}
+
+.himg {
+    height: 37%;
+    width: 11%;
+    margin: -7px 15px 0 0px;
+}
+
+.simg {
+    height: 37%;
+    width: 11%;
+    margin: -7px 15px 0 0px;
+}
+
+.vimg {
+    height: 6vh;
+    width: 2%;
+    margin: 0 22px 0 -28px;
+}
+
+.HB2 a {
+    color: #FFFFFF;
+    font-size: 16px;
+    font-family: Source Sans Pro;
+    margin-top: 18px;
+    white-space: nowrap;
+}
+
+.HB2 a:hover {
+    color: rgb(183, 187, 186);
+}
+
+@media screen and (max-width:991px) {
+    .active {
+        width: 23.5vw;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .HB3 {
+        background-color: #EDF0F5;
+        padding: 10px;
+        margin-top: 0vh;
+    }
+
+    .HB {
+        position: relative;
+        background-color: #384C6D;
+        z-index: 1000;
+        height: 15vh;
+    }
+
+    .sn {
+        /* height: 0%;
+            width: 0%; */
+        position: absolute;
+        background-color: white;
+    }
+
+    .HT {
+        padding: 30px 0 0 0;
+    }
+
+    #pic1 {
+        width: 50%;
+    }
+
+    .HB2 ul {
+        position: relative;
+        margin-top: 0%;
+    }
+
+    .simg {
+        width: 3%;
+    }
+
+    .himg {
+        width: 3%;
+    }
+
+    .HB2 {
+        min-height: 50vh;
+    }
+
+    .vimg {
+        width: 1%;
+    }
+
+    .active {
+        width: 98vw;
+    }
+}
+
+@media screen and (max-width:575px) {
+    .HB {
+        position: relative;
+        background-color: #384C6D;
+    }
+
+    .sn {
+        height: 7vh;
+        width: 100%;
+        position: relative;
+        background-color: white;
+    }
+
+    .HT {
+        padding: 10px 0 0 0;
+    }
+
+    .HB2 ul {
+        position: relative;
+        margin-top: 0h;
+    }
+
+    .simg {
+        width: 5%;
+    }
+
+    .himg {
+        width: 5%;
+    }
+
+    .active {
+        width: 97vw;
+    }
+
+    #pic1 {
+        height: 50%;
+        width: 100%;
+    }
+}
